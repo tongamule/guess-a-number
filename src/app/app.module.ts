@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { GuessANumberComponent } from './guess-a-number/guess-a-number.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GuessANumberComponent
   ],
   imports: [
     BrowserModule,
