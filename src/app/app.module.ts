@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { GuessANumberComponent } from './guess-a-number/guess-a-number.component';
+import { ProvideANumberComponent } from './provide-a-number/provide-a-number.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    GuessANumberComponent
+    GuessANumberComponent,
+    ProvideANumberComponent
   ],
   imports: [
     BrowserModule,
