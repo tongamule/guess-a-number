@@ -1,6 +1,11 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
+export interface GuessResult {
+  number: number;
+  result: string;
+}
+
 @Injectable()
 export class NumberHelperService {
   constructor(private _fb: FormBuilder) {}
@@ -15,13 +20,18 @@ export class NumberHelperService {
     return Math.floor(Math.random() * 100 + 1);
   }
 
-  checkNumberWithGuess(targetNumber: number, guessNumber: number) {
+  checkNumberWithGuess(targetNumber: number, guessNumber: number): GuessResult {
+    let msg: string;
     if (guessNumber === targetNumber) {
-      return 'EQUAL';
+      msg = 'EQUAL';
     } else if (guessNumber > targetNumber) {
-      return 'HIGHER';
+      msg = 'HIGHER';
     } else {
-      return 'LOWER';
+      msg = 'LOWER';
     }
+    return {
+      number: guessNumber,
+      result: msg
+    };
   }
 }
