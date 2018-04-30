@@ -1,3 +1,13 @@
-<p>
-  guess-a-number works!
-</p>
+<h3>Adivina un número</h3>
+<p>Debes indicar un número del 1 al 100 para que concida con el que ya escogimos</p>
+<p>Te avisaremos si el número es mayor o menor al elegido</p>
+
+<form [formGroup]="numberForm" (ngSubmit)="numberForm.valid && checkNumber()">
+  <input type="number" formControlName="number">
+
+  <span *ngIf="numberForm.get('number').hasError('required')" class="error">El número es requerido</span>
+  <span *ngIf="numberForm.get('number').hasError('min')" class="error">El número debe ser mayor o igual a 1</span>
+  <span *ngIf="numberForm.get('number').hasError('max')" class="error">El número debe ser menor o igual a 100</span>
+
+  <button type="submit">¡Advina!</button>
+</form>

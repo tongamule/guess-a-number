@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NumberHelperService } from '../services';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-guess-a-number',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuessANumberComponent implements OnInit {
 
-  constructor() { }
+  numberForm: FormGroup;
+  constructor(private _numberHelper: NumberHelperService) { }
 
   ngOnInit() {
+    this.numberForm = this._numberHelper.getNumberForm();
   }
 
+  checkNumber() {
+    debugger;
+  }
 }
