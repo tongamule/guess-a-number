@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./guess-a-number.component.scss']
 })
 export class GuessANumberComponent implements OnInit {
-  guessResult:  GuessResult;
+  guessResult: GuessResult;
   numberForm: FormGroup;
   numberToGuess: number;
   constructor(private _numberHelper: NumberHelperService) {}
@@ -25,6 +25,9 @@ export class GuessANumberComponent implements OnInit {
       number: guess,
       result: result
     };
+  }
+  giveUp() {
+    alert(this.numberToGuess);
   }
 }
 
