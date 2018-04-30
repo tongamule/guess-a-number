@@ -6,19 +6,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GuessANumberComponent } from './guess-a-number/guess-a-number.component';
 import { ProvideANumberComponent } from './provide-a-number/provide-a-number.component';
-
+import { NumberHelperService } from './services';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    GuessANumberComponent,
-    ProvideANumberComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
+  declarations: [AppComponent, GuessANumberComponent, ProvideANumberComponent],
+  imports: [BrowserModule, AppRoutingModule],
+  providers: [NumberHelperService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
