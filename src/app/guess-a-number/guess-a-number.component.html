@@ -11,3 +11,12 @@
 
   <button type="submit">¡Advina!</button>
 </form>
+
+<ng-container *ngIf="guessResult">
+  <div class="result" [ngSwitch]="guessResult.result">
+    <span *ngSwitchCase="'EQUAL'" class="success">¡Felicitaciones! ha adivinado el número</span>
+    <span *ngSwitchCase="'HIGHER'" class="error">El número que indicó es MAYOR al objetivo</span>
+    <span *ngSwitchCase="'LOWER'" class="error">El número que indicó es MENOR al objetivo</span>
+    <span *ngSwitchCaseDefault>Indique un número para ver el resultado</span>
+  </div>
+</ng-container>

@@ -8,15 +8,27 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./guess-a-number.component.scss']
 })
 export class GuessANumberComponent implements OnInit {
-
+  guessResult:  GuessResult;
   numberForm: FormGroup;
-  constructor(private _numberHelper: NumberHelperService) { }
+  numberToGuess: number;
+  constructor(private _numberHelper: NumberHelperService) {}
 
   ngOnInit() {
     this.numberForm = this._numberHelper.getNumberForm();
+    this.numberToGuess = this._numberHelper.getRandomNumber();
   }
 
   checkNumber() {
-    debugger;
+    const guess: number = this.numberForm.value.number;
+    const result = this._numberHelper.checkNumberWithGuess(this.numberToGuess, guess);
+    this.guessResult = {
+      number: guess,
+      result: result
+    };
   }
+}
+
+interface GuessResult {
+  number: number;
+  result: string;
 }

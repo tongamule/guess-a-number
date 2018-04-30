@@ -10,4 +10,18 @@ export class NumberHelperService {
       number: [null, [Validators.required, Validators.min(1), Validators.max(100)]]
     });
   }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * 100 + 1);
+  }
+
+  checkNumberWithGuess(targetNumber: number, guessNumber: number) {
+    if (guessNumber === targetNumber) {
+      return 'EQUAL';
+    } else if (guessNumber > targetNumber) {
+      return 'HIGHER';
+    } else {
+      return 'LOWER';
+    }
+  }
 }
