@@ -5,6 +5,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
+    "prestart": "npm install",
     "start": "npm run ng serve",
     "build": "npm run ng build --prod",
     "test": "npm run ng test",
