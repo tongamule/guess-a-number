@@ -17,21 +17,27 @@ export class NumberHelperService {
   }
 
   getRandomNumber(min: number = 1, max: number = 100) {
+    if (min > 100) {
+      return 100;
+    }
+    if (max < 1) {
+      return 1;
+    }
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
   checkNumberWithGuess(targetNumber: number, guessNumber: number): GuessResult {
-    let msg: string;
-    if (guessNumber === targetNumber) {
-      msg = 'EQUAL';
-    } else if (guessNumber > targetNumber) {
-      msg = 'HIGHER';
-    } else {
-      msg = 'LOWER';
-    }
+    const msg = guessNumber === targetNumber ? 'EQUAL' : guessNumber > targetNumber ? 'HIGHER' : 'LOWER';
+
     return {
       number: guessNumber,
       result: msg
     };
+  }
+  isLimit(val: number) {
+    return val === 1 || val === 100;
+  }
+  validateRange(val: number) {
+    return val >= 1 || val <= 100;
   }
 }

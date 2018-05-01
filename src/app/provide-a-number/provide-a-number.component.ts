@@ -7,40 +7,47 @@ import { NumberHelperService, GuessResult } from '../services';
   styleUrls: ['./provide-a-number.component.scss']
 })
 export class ProvideANumberComponent implements OnInit {
-  newGuess: number;
+  private _guesses: number[] = [];
+  private _newGuess: number;
+  public get newGuess(): number {
+    return this._newGuess;
+  }
+  public set newGuess(v: number) {
+    this._guesses.push(v);
+    this._newGuess = v;
+  }
+  success = false;
   lastGuess: GuessResult;
   constructor(private _numberHelper: NumberHelperService) {}
 
   ngOnInit() {}
 
   guessANumber() {
+    this._guesses = [];
+    this.success = false;
     this.newGuess = this._numberHelper.getRandomNumber();
-    return this.newGuess;
   }
 
   isEqual() {
-    alert('¡Gracias por jugar!');
+    this.success = true;
   }
 
   goHigher() {
-    debugger;
-    const newNumber = this._numberHelper.getRandomNumber(this.newGuess + 1, 100);
-    this.validateNumber(newNumber);
+    this.newGuess = this._getValidNumber(this.newGuess + 1, 100);
   }
 
   goLower() {
-    debugger;
-    const newNumber = this._numberHelper.getRandomNumber(1, this.newGuess - 1);
-    this.validateNumber(newNumber);
+    this.newGuess = this._getValidNumber(1, this.newGuess - 1);
+  }
+  private _getValidNumber(min: number, max: number) {
+    const newVal = this._numberHelper.getRandomNumber(min, max);
+    if (this._numberHelper.validateRange(newVal) && (!this._isAlreadyGuessed(newVal) || this._numberHelper.isLimit(newVal))) {
+      return newVal;
+    }
+    return this._getValidNumber(min, max);
   }
 
-  private validateNumber(val: number) {
-    const isValid = val >= 1 || val <= 100;
-    if (!isValid) {
-      alert('Recuerda: el número debe ser entre 1 y 100');
-    } else {
-      this.newGuess = val;
-    }
-    return isValid;
+  private _isAlreadyGuessed(val: number) {
+    return this._guesses.includes(val);
   }
 }
