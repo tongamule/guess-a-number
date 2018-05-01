@@ -3,13 +3,14 @@
 <p>Te avisaremos si el número es mayor o menor al elegido</p>
 
 <form class="guessForm" [formGroup]="numberForm" (ngSubmit)="numberForm.valid && checkNumber()">
-  <input type="number" min="1" max="100" formControlName="number">
+  <label for="numberToGuess"><strong>Número para probar</strong></label>
+  <input id="numberToGuess" type="number" min="1" max="100" formControlName="number">
 
   <span *ngIf="numberForm.get('number').hasError('required')" class="error">El número es requerido</span>
   <span *ngIf="numberForm.get('number').hasError('min')" class="error">El número debe ser mayor o igual a 1</span>
   <span *ngIf="numberForm.get('number').hasError('max')" class="error">El número debe ser menor o igual a 100</span>
 
-  <button type="submit">¡Advina!</button>
+  <button type="submit">¡Adivina!</button>
 </form>
 
 <ng-container *ngIf="guessResult">

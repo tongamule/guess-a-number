@@ -1,27 +1,21 @@
 # GuessANumber
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
+Este proyecto fue generado con [Angular CLI](https://github.com/angular/angular-cli) version 1.6.3.
 
-## Development server
+## ¿Cómo levantar el proyecto?
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1 - Clonar proyecto
+2 - Correr `npm run start` y se abrirá automáticamente el navegador en http://localhost:4200
 
-## Code scaffolding
+## Introducción al proyecto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Al ir al sitio que se abre en el paso anterior veremos un menú con las 2 posibles opciones de juego
 
-## Build
+### Adivina un número:
+El programa elegirá un número del 1 al 100 y podrás adivinarlo indicando el número candidato en el campo de texto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Al adivinar un número se indicará si es el correcto, si es mayor o menor. Utiliza esta información a tu favor.
 
-## Running unit tests
+### Escoge un número y deja que el programa lo adivine
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Este juego es el opuesto al anterior. Deberás elegir un número del 1 al 100. El programa tratará de adivinarlo y deberás indicarle  si es el correcto, mayor o menor al elegido.
