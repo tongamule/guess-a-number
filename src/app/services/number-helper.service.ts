@@ -5,6 +5,10 @@ export interface GuessResult {
   number: number;
   result: string;
 }
+export const numberRange  = {
+  minValue : 1,
+  maxValue : 100
+};
 
 @Injectable()
 export class NumberHelperService {
@@ -12,16 +16,16 @@ export class NumberHelperService {
 
   getNumberForm() {
     return this._fb.group({
-      number: [null, [Validators.required, Validators.min(1), Validators.max(100)]]
+      number: [null, [Validators.required, Validators.min(numberRange.minValue), Validators.max(numberRange.maxValue)]]
     });
   }
 
-  getRandomNumber(min: number = 1, max: number = 100) {
-    if (min > 100) {
-      return 100;
+  getRandomNumber(min: number = numberRange.minValue, max: number = numberRange.maxValue) {
+    if (min > numberRange.maxValue) {
+      return numberRange.maxValue;
     }
-    if (max < 1) {
-      return 1;
+    if (max < numberRange.minValue) {
+      return numberRange.minValue;
     }
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -35,9 +39,9 @@ export class NumberHelperService {
     };
   }
   isLimit(val: number) {
-    return val === 1 || val === 100;
+    return val === numberRange.minValue || val === numberRange.maxValue;
   }
   validateRange(val: number) {
-    return val >= 1 || val <= 100;
+    return val >= numberRange.minValue || val <= numberRange.maxValue;
   }
 }

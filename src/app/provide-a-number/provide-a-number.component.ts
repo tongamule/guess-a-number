@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NumberHelperService, GuessResult } from '../services';
+import { NumberHelperService, GuessResult, numberRange } from '../services';
 
 @Component({
   selector: 'app-provide-a-number',
@@ -33,11 +33,11 @@ export class ProvideANumberComponent implements OnInit {
   }
 
   goHigher() {
-    this.newGuess = this._getValidNumber(this.newGuess + 1, 100);
+    this.newGuess = this._getValidNumber(this.newGuess + 1, numberRange.maxValue);
   }
 
   goLower() {
-    this.newGuess = this._getValidNumber(1, this.newGuess - 1);
+    this.newGuess = this._getValidNumber(numberRange.minValue, this.newGuess - 1);
   }
   private _getValidNumber(min: number, max: number) {
     const newVal = this._numberHelper.getRandomNumber(min, max);
