@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NumberHelperService } from '../services';
+import { NumberHelperService, GuessResult } from '../services';
 import { FormGroup } from '@angular/forms';
 
 @Component({
@@ -20,18 +20,9 @@ export class GuessANumberComponent implements OnInit {
 
   checkNumber() {
     const guess: number = this.numberForm.value.number;
-    const result = this._numberHelper.checkNumberWithGuess(this.numberToGuess, guess);
-    this.guessResult = {
-      number: guess,
-      result: result
-    };
+    this.guessResult = this._numberHelper.checkNumberWithGuess(this.numberToGuess, guess);
   }
   giveUp() {
     alert(this.numberToGuess);
   }
-}
-
-interface GuessResult {
-  number: number;
-  result: string;
 }

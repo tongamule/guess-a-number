@@ -1,3 +1,15 @@
-<p>
-  provide-a-number works!
-</p>
+<h3>Elige un número</h3>
+<p>Elige un número del 1 al 100 y avisa cuando estes listo para jugar</p>
+<p>Elegiremos un número y deberás indicar si es el elegido, o si es mayor o menor que el que elegiste</p>
+
+<button (click)="guessANumber()" type="button">Comencemos</button>
+
+<ng-container *ngIf="newGuess && !success">
+  ¿El número es {{newGuess}}?
+  <div class="actions">
+    <button (click)="goHigher()">Es menor</button>
+    <button (click)="isEqual()">¡ESTE ES MI NUMERO!</button>
+    <button (click)="goLower()">Es mayor</button>
+  </div>
+</ng-container>
+<h4 *ngIf="success">¡Gracias por jugar!</h4>
