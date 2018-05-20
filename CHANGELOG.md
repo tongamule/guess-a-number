@@ -1,6 +1,9 @@
 # CHANGELOG
 
-## Version 1.0.0 - 05/01/2018
+## Version 1.0.1 - 20/05/2018
+* Bugfix - Incluyo dependencias de desarrollo para poder compilar proyecto de angular sin tener instalado Angular CLI en forma global
+
+## Version 1.0.0 - 01/01/2018
 
 Incluye:
 * Funcionalidad para adivinar un número elegido por el programa
