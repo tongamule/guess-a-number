@@ -1,12 +1,12 @@
 {
   "name": "guess-a-number",
   "author": "Gastón Mulé",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "prestart": "npm install",
-    "start": "npm run ng serve",
+    "start": "npm run ng serve -o --prod",
     "build": "npm run ng build --prod",
     "test": "npm run ng test",
     "lint": "npm run ng lint",
